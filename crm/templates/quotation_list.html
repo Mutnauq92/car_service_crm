@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h2>Your Quotations</h2>
+{% if quotations %}
+    <ul>
+    {% for quotation in quotations %}
+        <li>{{ quotation }} - Labor: {{ quotation.labor_cost }} - Parts: {{ quotation.parts_cost }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You have no quotations.</p>
+    
+{% endif %}
+<a href="{% url 'crm:quotation_create' %}" class="btn btn-primary">Create Quotation</a>
+{% endblock %}

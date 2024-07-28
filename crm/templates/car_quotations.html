@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}Quotations for {{ car.model }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Quotations for {{ car.make }} {{ car.model }}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Part Cost</th>
+                <th scope="col">Labour Cost</th>
+                <th scope="col">Total Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quotation in quotations %}
+            <tr>
+                <td>{{ quotation.description }}</td>
+                <td>${{ quotation.part_cost }}</td>
+                <td>${{ quotation.labour_cost }}</td>
+                <td>${{ quotation.part_cost + quotation.labour_cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total Costs</h3>
+    <p>Total Parts Cost: ${{ total_parts_cost }}</p>
+    <p>Total Labour Cost: ${{ total_labour_cost }}</p>
+    <p>Total Cost: ${{ total_cost }}</p>
+</div>
+{% endblock %}
