@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron mt-4">
+    {% if user.is_authenticated %}
+        <h1 class="display-4">Welcome back to Car Service CRM!</h1>
+        <p class="lead">Manage your car services, quotations, and appointments all in one place.</p>
+        <hr class="my-4">
+        <p>Use the navigation bar to access your cars, quotations, and appointments.</p>
+    {% else %}
+        <h1 class="display-4">Welcome to Car Service CRM!</h1>
+        <p class="lead">Manage your car services, quotations, and appointments all in one place.</p>
+        <hr class="my-4">
+        <p>Please login or register to continue.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'register' %}" role="button">Register</a>
+    {% endif %}
+</div>
+{% endblock %}
+

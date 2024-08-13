@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Service CRM</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}!</p>
+        <a href="{% url 'crm:home' %}">Home</a>
+        <a href="{% url 'crm:car_list' %}">Your Cars</a>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'crm:register' %}">Register</a>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

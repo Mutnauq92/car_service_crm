@@ -1,0 +1,32 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}My Garage{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">My Garage</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Make</th>
+                <td><a href="{% url 'crm:car_list'%}">{{ car.model }}</a></td>
+                <th scope="col">Registration</th>
+                <th scope="col">VIN</th>
+                <th scope="col">Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car.make }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.reg }}</td>
+                <td>{{ car.vin }}</td>
+                <td>{{ car.color }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crm:car_create' %}" class="btn btn-primary">Add New Car</a>
+</div>
+{% endblock %}
