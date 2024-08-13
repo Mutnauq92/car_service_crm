@@ -103,6 +103,9 @@ def appointment_list(request):
 
 @login_required
 def appointment_create(request):
+    cars = Car.objects.filter(owner=request.user)
+    if not cars:
+        return redirect(reverse('crm:car_create'))  # Redirect if no cars are available
     if request.method == 'POST':
         form = AppointmentForm(request.POST, user=request.user)
         if form.is_valid():
